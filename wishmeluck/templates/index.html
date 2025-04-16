@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Activity Prediction</title>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f7fc;
+            color: #333;
+        }
+
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+
+        .container {
+            flex: 1;
+            width: 50%;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+
+        input[type="file"] {
+            padding: 10px;
+            font-size: 1em;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+
+        button {
+            padding: 12px;
+            background-color: #4CAF50;
+            color: white;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .result {
+            margin-top: 30px;
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .result h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        .result p {
+            font-size: 1.2em;
+            line-height: 1.5;
+        }
+
+        .error {
+            margin-top: 20px;
+            color: red;
+            font-size: 1.1em;
+        }
+
+        footer {
+            text-align: center;
+            padding: 15px;
+            background-color: #4CAF50;
+            color: white;
+        }
+    </style>
+     <script>
+        setInterval(() => {
+            location.reload();
+        }, 30000); // 30000 ms = 30 seconds
+    </script>
+</head>
+<body>
+
+<header>
+    <h1>Activity Prediction</h1>
+</header>
+
+<div class="container">
+    <form method="POST" enctype="multipart/form-data">
+        <label for="file">Upload JSON File:</label>
+        <input type="file" name="file" accept=".json" required>
+        <button type="submit">Submit</button>
+    </form>
+
+    {% if class_idx is not none %}
+    <div class="result">
+        <h2>Prediction Result:</h2>
+        <p><strong>Last Window Prediction (every 30 steps):</strong></p>
+        <p><strong>Class:</strong> {{ class_idx }}</p>
+        <p><strong>Activity:</strong> {{ activity }}</p>
+    </div>
+    {% endif %}
+</div>
+
+<footer>
+    <p>&copy; 2025 Activity Prediction App. All Rights Reserved.</p>
+</footer>
+
+</body>
+</html>
